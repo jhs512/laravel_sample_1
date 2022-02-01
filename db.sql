@@ -1,2 +1,4 @@
 # DB 생성
+DROP DATABASE IF EXISTS site7;
 CREATE DATABASE site7;
+USE site7;
