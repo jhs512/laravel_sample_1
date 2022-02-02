@@ -69,6 +69,12 @@ class UserController extends AdminController
     {
         $form = new Form(new User());
 
+        $form->saving(function ($form) {
+            if ($form->password && $form->model()->password != $form->password) {
+                $form->password = bcrypt($form->password);
+            }
+        });
+
         $form->text('name', __('Name'));
         $form->email('email', __('Email'));
         $form->datetime('email_verified_at', __('Email verified at'))->default(date('Y-m-d H:i:s'));
